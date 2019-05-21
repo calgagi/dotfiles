@@ -26,7 +26,7 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\[\e[1;32m[\]\u@\h\[\e[m\]$(parse_git_branch) \[\e[1;34m\]\w\[\e[m\e[1;32m]\e[m\] \$ '
+export PS1='\[\e[1;32m[\]\e[m\e[1;32m\u@\h\[\e[m\]$(parse_git_branch) \[\e[4;36m\]\w\[\e[m \$\e[1;32m]\e[m\] '
 
 
 if [ -x /usr/bin/dircolors ]; then
