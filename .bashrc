@@ -51,11 +51,11 @@ alias la='ls -als'
 alias l='ls -ls'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
-
+alias g++='g++ --std=c++11'
 alias gdb='gdb -q'
 
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
-LS_COLORS="ow=01;36;40" && export LS_COLORS
+LS_COLORS="ow=01;36;40:di=93" && export LS_COLORS
 
 stty sane

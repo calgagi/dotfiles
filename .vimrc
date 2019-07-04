@@ -24,5 +24,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set t_Co=256
+set sw=4 sts=4 ts=8 et
 
 syntax on
