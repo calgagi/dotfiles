@@ -22,12 +22,46 @@ force_color_prompt=yes
 
 color_promprt=yes
 
+# Extract a file
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+}
+
+# Colors
+RESET="\[\017\]"
+NORMAL="\[\033[0m\]"
+RED="\[\033[31;1m\]"
+YELLOW="\[\033[33;1m\]"
+WHITE="\[\033[37;1m\]"
+GREEN="\[\e[1;32m\]"
+BLUE_UNDERLINE="\[\e[4;36m\]"
+ORANGE="\[\033[38;5;216m\]"
+SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
+
+
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\[\e[1;32m[\]\e[m\e[1;32m\u@\h\[\e[m\]$(parse_git_branch) \[\e[4;36m\]\w\[\e[m \$\e[1;32m]\e[m\] '
-
+# THE ALL IMPORTANT PS1
+PS1="${NORMAL}\`${SELECT}\`[${ORANGE}\u@\h${WHITE}$(parse_git_branch) ${ORANGE}\w${NORMAL} \`${SELECT}\`] >${NORMAL} "
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
