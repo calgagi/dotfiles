@@ -50,9 +50,11 @@ NORMAL="\[\033[0m\]"
 RED="\[\033[31;1m\]"
 YELLOW="\[\033[33;1m\]"
 WHITE="\[\033[37;1m\]"
-GREEN="\[\e[1;32m\]"
-BLUE_UNDERLINE="\[\e[4;36m\]"
+GREEN="\[\033[38;5;120m\]"
+BLUE="\[\033[38;5;111m\]"
 ORANGE="\[\033[38;5;216m\]"
+PURPLE="\[\033[38;5;098m\]"
+BAD="GREEN"
 SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
 
 
@@ -61,25 +63,11 @@ parse_git_branch() {
 }
 
 # THE ALL IMPORTANT PS1
-PS1="${NORMAL}\`${SELECT}\`[${ORANGE}\u@\h${WHITE}$(parse_git_branch) ${ORANGE}\w${NORMAL} \`${SELECT}\`] >${NORMAL} "
-
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+PS1="${GREEN}[${ORANGE}\u@\h${BLUE}$(parse_git_branch) ${PURPLE}\w${GREEN}] \`${SELECT}\`>${NORMAL} "
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-# some more ls aliases
-[[ "$OSTYPE" == "darwin"* ]] && export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd" && \
-  alias ls='ls -G' || alias ls='ls --color'
-
 alias ll='ls -alF'
 alias la='ls -als'
 alias l='ls -ls'
@@ -87,9 +75,10 @@ alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
 alias g++='g++ --std=c++11'
 alias gdb='gdb -q'
+alias ls='ls --color=auto'
 
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
-LS_COLORS="ow=01;36;40:di=93" && export LS_COLORS
+export LS_COLORS='ow=0;37'
 
 stty sane
