@@ -57,13 +57,16 @@ PURPLE="\[\033[38;5;098m\]"
 BAD="GREEN"
 SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
 
-
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # THE ALL IMPORTANT PS1
-PS1="${GREEN}[${ORANGE}\u@\h${BLUE}$(parse_git_branch) ${PURPLE}\w${GREEN}] \`${SELECT}\`>${NORMAL} "
+make_prompt() {
+    PS1="${GREEN}[${ORANGE}\u@\h${BLUE}$(parse_git_branch) ${PURPLE}\w${GREEN}] \`${SELECT}\`>${NORMAL} "
+}
+
+PROMPT_COMMAND='make_prompt'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
