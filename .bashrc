@@ -68,6 +68,7 @@ make_prompt() {
 
 PROMPT_COMMAND='make_prompt'
 
+alias ssh='ssh -i /home/calgagi/id_rsa '
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
