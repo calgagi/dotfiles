@@ -68,7 +68,6 @@ make_prompt() {
 
 PROMPT_COMMAND='make_prompt'
 
-alias ssh='ssh -i /home/calgagi/id_rsa '
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -77,9 +76,10 @@ alias la='ls -als'
 alias l='ls -ls'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
-alias g++='g++ --std=c++11'
+alias g++='g++ --std=c++17 -O2 -Wextra'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
+alias please='sudo'
 
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
