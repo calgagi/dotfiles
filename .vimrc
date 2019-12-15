@@ -12,7 +12,6 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'nightsense/vimspectr'
 Plug 'tomlion/vim-solidity'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'ap/vim-buftabline'
 call plug#end()
 
@@ -32,13 +31,5 @@ set sw=4 sts=4 ts=8 et
 
 " Gets rid of that annoying sound
 set visualbell
-
-" Nerdtree requires apt-vim to install.
-" Opens NERDTree tab automatically.
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd p
-" Closes NERDTree tab if only one open.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 syntax on

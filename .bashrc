@@ -83,10 +83,11 @@ alias please='sudo'
 
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
-export LS_COLORS='ow=0;37'
+DIR_COLOR="\033[38;5;098"
+FILE_COLOR="\033[38;5;111"
+DEF_COLOR="\033[0"
+export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
 stty sane
 
 export PATH="/mnt/c/Users/calga/Documents/GitHub/bin:/mnt/c/Users/calga/Documents/GitHub/.local/bin:/usr/local/bin:/mnt/c/Users/calga/Documents/GitHub/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/snap/bin:/mnt/c/Users/calga/Documents/GitHub/.dotnet/tools:/mnt/c/Users/calga/Documents/GitHub/.vimpkg/bin"
-
-export LS_COLORS='di=96:'
