@@ -29,6 +29,9 @@ set softtabstop=4
 set t_Co=256
 set sw=4 sts=4 ts=8 et
 
+" Gets rid of that annoying sound
+set visualbell
+
 " Nerdtree requires apt-vim to install.
 " Opens NERDTree tab automatically.
 autocmd vimenter * NERDTree

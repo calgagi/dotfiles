@@ -76,7 +76,6 @@ alias la='ls -als'
 alias l='ls -ls'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
-alias g++='g++ --std=c++11'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
 
@@ -87,3 +86,5 @@ export LS_COLORS='ow=0;37'
 stty sane
 
 export PATH="/mnt/c/Users/calga/Documents/GitHub/bin:/mnt/c/Users/calga/Documents/GitHub/.local/bin:/usr/local/bin:/mnt/c/Users/calga/Documents/GitHub/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/snap/bin:/mnt/c/Users/calga/Documents/GitHub/.dotnet/tools:/mnt/c/Users/calga/Documents/GitHub/.vimpkg/bin"
+
+export LS_COLORS='di=96:'
