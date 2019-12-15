@@ -76,8 +76,10 @@ alias la='ls -als'
 alias l='ls -ls'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
+alias g++='g++ --std=c++17 -O2 -Wextra'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
+alias please='sudo'
 
 export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
