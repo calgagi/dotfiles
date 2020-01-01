@@ -48,14 +48,16 @@ extract () {
 RESET="\[\017\]"
 NORMAL="\[\033[0m\]"
 RED="\[\033[31;1m\]"
-YELLOW="\[\033[33;1m\]"
+YELLOW="\[\033[38;5;228m\]"
 WHITE="\[\033[37;1m\]"
 GREEN="\[\033[38;5;120m\]"
-BLUE="\[\033[38;5;111m\]"
+BLUE="\[\033[38;5;81m\]"
 ORANGE="\[\033[38;5;216m\]"
-PURPLE="\[\033[38;5;098m\]"
+PINK="\[\033[38;5;177m\]"
+PURPLE="\[\033[38;5;105m\]"
 BAD="GREEN"
-SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
+#SELECT="if [ \$? = 0 ]; then echo \"${YELLOW}\"; else echo \"${RED}\"; fi"
+SELECT=$YELLOW
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -63,7 +65,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${GREEN}[${ORANGE}\u@\h${BLUE}$(parse_git_branch) ${PURPLE}\w${GREEN}] \`${SELECT}\`>${NORMAL} "
+    PS1="${YELLOW}[${PINK}\u@\h${NORMAL}$(parse_git_branch) ${PURPLE}\w${YELLOW}] ${YELLOW}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -81,13 +83,11 @@ alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
 
-export PATH="/usr/local/bin:$HOME/bin:$PATH"
-
 DIR_COLOR="\033[38;5;098"
-FILE_COLOR="\033[38;5;111"
+FILE_COLOR="\033[38;5;228"
 DEF_COLOR="\033[0"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
-stty sane
+export PATH="$PATH:$HOME/cf_rand"
 
-export PATH="/mnt/c/Users/calga/Documents/GitHub/bin:/mnt/c/Users/calga/Documents/GitHub/.local/bin:/usr/local/bin:/mnt/c/Users/calga/Documents/GitHub/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/calga/AppData/Local/Microsoft/WindowsApps:/snap/bin:/mnt/c/Users/calga/Documents/GitHub/.dotnet/tools:/mnt/c/Users/calga/Documents/GitHub/.vimpkg/bin"
+stty sane

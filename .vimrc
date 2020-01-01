@@ -16,7 +16,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'ap/vim-buftabline'
 call plug#end()
 
-colorscheme angr
+colorscheme dracula 
 
 let g:airline_powerline_fonts = 1
 
