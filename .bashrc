@@ -56,8 +56,7 @@ ORANGE="\[\033[38;5;216m\]"
 PINK="\[\033[38;5;177m\]"
 PURPLE="\[\033[38;5;105m\]"
 BAD="GREEN"
-#SELECT="if [ \$? = 0 ]; then echo \"${YELLOW}\"; else echo \"${RED}\"; fi"
-SELECT=$YELLOW
+SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -65,7 +64,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${YELLOW}[${PINK}\u@\h${NORMAL}$(parse_git_branch) ${PURPLE}\w${YELLOW}] ${YELLOW}\$${NORMAL} "
+    PS1="${GREEN}[${ORANGE}\u@\h${NORMAL}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${GREEN}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -76,6 +75,7 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -als'
 alias l='ls -ls'
+alias cd='clear && cd'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
 alias g++='g++ --std=c++17 -O2 -Wextra'
@@ -84,10 +84,10 @@ alias ls='ls --color=auto'
 alias please='sudo'
 
 DIR_COLOR="\033[38;5;098"
-FILE_COLOR="\033[38;5;228"
+FILE_COLOR="\033[38;5;227"
 DEF_COLOR="\033[0"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
-export PATH="$PATH:$HOME/cf_rand"
+export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin"
 
 stty sane
