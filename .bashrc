@@ -57,6 +57,14 @@ PINK="\[\033[38;5;177m\]"
 PURPLE="\[\033[38;5;105m\]"
 BAD="GREEN"
 SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
+NORD_LIGHTBLUE="\[\033[38;5;68m\]"
+NORD_DARKGREEN="\[\033[38;5;23m\]"
+NORD_LLBLUE="\[\033[38;5;111m\]"
+NORD_BLUE="\[\033[38;5;27m\]"
+GREY="\[\033[38;5;251m\]"
+
+
+
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -64,7 +72,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${GREEN}[${ORANGE}\u@\h${NORMAL}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${GREEN}\$${NORMAL} "
+    PS1="${NORD_LIGHTBLUE}[${GREY}\u@\h${NORD_LLBLUE}$(parse_git_branch) ${NORD_DARKGREEN}\w${NORD_LIGHTBLUE}] ${NORD_LIGHTBLUE}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -84,8 +92,8 @@ alias ls='ls --color=auto'
 alias please='sudo'
 
 DIR_COLOR="\033[38;5;098"
-FILE_COLOR="\033[38;5;227"
-DEF_COLOR="\033[0"
+DEF_COLOR="\033[38;5;255"
+FILE_COLOR="\033[38;5;111"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
 export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin"

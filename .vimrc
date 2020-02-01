@@ -13,12 +13,16 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
 Plug 'ap/vim-buftabline'
 Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 syntax enable
 set background=dark
-colorscheme purify
+colorscheme nord
 
+
+let g:solarized_termcolors=256
 let g:airline_powerline_fonts = 1
 
 set laststatus=2
