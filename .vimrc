@@ -17,10 +17,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 call plug#end()
 
-syntax enable
+syntax on
 set background=dark
-colorscheme nord
+colorscheme angr
 
+set noswapfile
+set nobackup
+set nowb
 
 let g:solarized_termcolors=256
 let g:airline_powerline_fonts = 1

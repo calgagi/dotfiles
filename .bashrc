@@ -51,7 +51,7 @@ RED="\[\033[31;1m\]"
 YELLOW="\[\033[38;5;228m\]"
 WHITE="\[\033[37;1m\]"
 GREEN="\[\033[38;5;120m\]"
-BLUE="\[\033[38;5;81m\]"
+BLUE="\[\033[38;5;21m\]"
 ORANGE="\[\033[38;5;216m\]"
 PINK="\[\033[38;5;177m\]"
 PURPLE="\[\033[38;5;105m\]"
@@ -72,7 +72,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${NORD_LIGHTBLUE}[${GREY}\u@\h${NORD_LLBLUE}$(parse_git_branch) ${NORD_DARKGREEN}\w${NORD_LIGHTBLUE}] ${NORD_LIGHTBLUE}\$${NORMAL} "
+    PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PINK}\w${GREEN}] ${GREEN}\$${GREY} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -86,7 +86,7 @@ alias l='ls -ls'
 alias cd='clear && cd'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
-alias g++='g++ --std=c++17 -O2 -Wextra'
+alias g++='g++ --std=c++17 -O2'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
