@@ -64,8 +64,6 @@ NORD_BLUE="\[\033[38;5;27m\]"
 GREY="\[\033[38;5;251m\]"
 
 
-
-
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -90,6 +88,10 @@ alias g++='g++ --std=c++17 -O2'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
+
+clip() {
+    cat $1 | clip.exe
+}
 
 DIR_COLOR="\033[38;5;098"
 DEF_COLOR="\033[38;5;255"

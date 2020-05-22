@@ -25,6 +25,8 @@ set noswapfile
 set nobackup
 set nowb
 
+let g:ftplugin_sql_omni_key = '<C-j>'
+
 let g:solarized_termcolors=256
 let g:airline_powerline_fonts = 1
 
