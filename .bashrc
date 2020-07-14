@@ -47,7 +47,7 @@ extract () {
 # Colors
 RESET="\[\017\]"
 NORMAL="\[\033[0m\]"
-RED="\[\033[31;1m\]"
+RED="\[\033[38;5;210m\]"
 YELLOW="\[\033[38;5;228m\]"
 WHITE="\[\033[37;1m\]"
 GREEN="\[\033[38;5;120m\]"
@@ -63,6 +63,11 @@ NORD_LLBLUE="\[\033[38;5;111m\]"
 NORD_BLUE="\[\033[38;5;27m\]"
 GREY="\[\033[38;5;251m\]"
 
+# Solarized
+LIGHTSEAGREEN="\[\033[38;5;37m\]"
+DARKGOLDENROD="\[\033[38;5;136m\]"
+ORANGE4="\[\033[38;5;64m\]"
+ORANGERED="\[\033[38;5;202m\]"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -70,7 +75,9 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PINK}\w${GREEN}] ${GREEN}\$${GREY} "
+    # SOLARIZED: PS1="${DARKGOLDENROD}[${ORANGE4}\u@\h${GREY}$(parse_git_branch) ${LIGHTSEAGREEN}\w${DARKGOLDENROD}] ${GREY}\$${GREY} "
+    # GITHUB: PS1="${RED}[${WHITE}\u@\h${RED}$(parse_git_branch) ${PURPLE}\w${RED}] ${GREY}\$${GREY} "
+    PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${GREY}\$${GREY} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -89,12 +96,12 @@ alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
 
-clip() {
+function clip() {
     cat $1 | clip.exe
 }
 
-DIR_COLOR="\033[38;5;098"
-DEF_COLOR="\033[38;5;255"
+DIR_COLOR="\033[38;5;251"
+DEF_COLOR="\033[38;5;251"
 FILE_COLOR="\033[38;5;111"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
