@@ -20,7 +20,10 @@ esac
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
 
-color_promprt=yes
+color_prompt=yes
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
 
 # Extract a file
 extract () {
@@ -68,6 +71,7 @@ LIGHTSEAGREEN="\[\033[38;5;37m\]"
 DARKGOLDENROD="\[\033[38;5;136m\]"
 ORANGE4="\[\033[38;5;64m\]"
 ORANGERED="\[\033[38;5;202m\]"
+DARKGREEN="\[\033[38;5;58m\]"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -75,9 +79,9 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    # SOLARIZED: PS1="${DARKGOLDENROD}[${ORANGE4}\u@\h${GREY}$(parse_git_branch) ${LIGHTSEAGREEN}\w${DARKGOLDENROD}] ${GREY}\$${GREY} "
     # GITHUB: PS1="${RED}[${WHITE}\u@\h${RED}$(parse_git_branch) ${PURPLE}\w${RED}] ${GREY}\$${GREY} "
-    PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${GREY}\$${GREY} "
+    # PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${NORMAL}\$${NORMAL} "
+    PS1=" ${DARKGOLDENROD}-> ${NORMAL}"
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -96,15 +100,17 @@ alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
 
+# function clip() {
+#     cat $1 | clip.exe
+# }
+
 function clip() {
-    cat $1 | clip.exe
+    cat $1 | xclip -sel clip
 }
 
 DIR_COLOR="\033[38;5;251"
-DEF_COLOR="\033[38;5;251"
-FILE_COLOR="\033[38;5;111"
+DEF_COLOR="\033[0"
+FILE_COLOR="\033[38;5;68"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
-export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin"
-
-stty sane
+export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/cp_gen"

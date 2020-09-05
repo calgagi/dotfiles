@@ -19,7 +19,8 @@ Plug 'posva/vim-vue'
 call plug#end()
 
 syntax on
-colorscheme angr 
+colorscheme solarized 
+set background=light
 
 set noswapfile
 set nobackup
