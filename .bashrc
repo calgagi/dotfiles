@@ -1,6 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 #export TERM=screen-256color
-export TERM=xterm
+export TERM=gnome-256color
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -24,6 +24,7 @@ color_prompt=yes
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
+. /usr/share/powerline/bindings/bash/powerline.sh
 
 # Extract a file
 extract () {
@@ -60,18 +61,27 @@ PINK="\[\033[38;5;177m\]"
 PURPLE="\[\033[38;5;105m\]"
 BAD="GREEN"
 SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
+
+# NORD
 NORD_LIGHTBLUE="\[\033[38;5;68m\]"
 NORD_DARKGREEN="\[\033[38;5;23m\]"
 NORD_LLBLUE="\[\033[38;5;111m\]"
 NORD_BLUE="\[\033[38;5;27m\]"
 GREY="\[\033[38;5;251m\]"
 
-# Solarized
+# SOLARIZED 
 LIGHTSEAGREEN="\[\033[38;5;37m\]"
 DARKGOLDENROD="\[\033[38;5;136m\]"
 ORANGE4="\[\033[38;5;64m\]"
 ORANGERED="\[\033[38;5;202m\]"
 DARKGREEN="\[\033[38;5;58m\]"
+
+# GRUVBOX
+GB_RED="\[\033[38;5;167m\]"
+GB_GREEN="\[\033[38;5;142m\]"
+GB_YELLOW="\[\033[38;5;214m\]"
+GB_BLUE="\[\033[38;5;109m\]"
+GB_PURPLE="\[\033[38;5;175m\]"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -80,8 +90,8 @@ parse_git_branch() {
 # THE ALL IMPORTANT PS1
 make_prompt() {
     # GITHUB: PS1="${RED}[${WHITE}\u@\h${RED}$(parse_git_branch) ${PURPLE}\w${RED}] ${GREY}\$${GREY} "
-    # PS1="${GREEN}[${ORANGE}\u@\h${GREY}$(parse_git_branch) ${PURPLE}\w${GREEN}] ${NORMAL}\$${NORMAL} "
-    PS1=" ${DARKGOLDENROD}-> ${NORMAL}"
+    PS1="${NORMAL}[${GB_RED}\u${NORMAL}@${GB_PURPLE}\h${NORMAL}$(parse_git_branch) ${GB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
+    # PS1=" ${DARKGOLDENROD}-> ${NORMAL}"
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -92,7 +102,6 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -als'
 alias l='ls -ls'
-alias cd='clear && cd'
 alias scr='screen -T xterm-color'
 alias tmux='TERM=xterm-256color tmux'
 alias g++='g++ --std=c++17 -O2'
@@ -110,7 +119,7 @@ function clip() {
 
 DIR_COLOR="\033[38;5;251"
 DEF_COLOR="\033[0"
-FILE_COLOR="\033[38;5;68"
+FILE_COLOR="\033[38;5;109"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
 export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/cp_gen"
