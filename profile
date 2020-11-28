@@ -49,6 +49,7 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
+# Startx launched on login
 if [[ "$(tty)" == '/dev/tty1' ]]; then
 	exec startx
 fi

@@ -16,7 +16,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font xft:Source Code Pro for Powerline 11
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -175,8 +175,63 @@ bindsym $mod+r mode "resize"
 # picom -- extremely important, also need ~/.config/picom.conf
 exec --no-startup-id picom -b
 
-# polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # background image
-exec --no-startup-id feh --bg-scale $HOME/.config/pillars_of_creation.jpg
+exec --no-startup-id feh --bg-scale $HOME/.config/cah.jpg
+
+# gaps
+gaps outer 0
+gaps inner 8
+
+# enable natural scrolling (requires xf86-input-synaptics)
+exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
+
+# set colors from Xresources
+# special
+set_from_resource $foreground foreground #C6C6C6
+set_from_resource $background background #1C1C1C
+set_from_resource $cursorColor cursorColor #C6C6C6
+# black
+set_from_resource $black1 color0 #303030
+set_from_resource $black2 color8 #444444
+set $trueblack #000000
+# red
+set_from_resource $red1 color1 #d75f5f
+set_from_resource $red2 color9 #d75f5f
+# green
+set_from_resource $green1 color2 #87AF87
+set_from_resource $green2 color10 #87AF87
+# yellow
+set_from_resource $yellow1 color3 #ffd75f
+set_from_resource $yellow2 color11 #ffd75f
+# blue
+set_from_resource $blue1 color4 #87afd7
+set_from_resource $blue2 color12 #87afd7
+# magenta
+set_from_resource $magenta1 color5 #afafd7
+set_from_resource $magenta2 color13 #afafd7
+# cyan
+set_from_resource $cyan1 color6 #afd7ff
+set_from_resource $cyan2 color14 #afd7ff
+# white
+set_from_resource $white1 color7 #4E4E4E
+set_from_resource $white2 color15 #ffffff
+
+client.focused $cyan1 $cyan1 $foreground $red1 $green1
+client.unfocused $blue1 $blue1 $foreground $red1 $green2
+client.focused_inactive $cyan1 $cyan1 $foreground $red1 $green1
+client.urgent $red1 $red1 $foreground $red1 $red1
+client.placeholder $blue1 $blue1 $foreground $red1 $green2
+client.background $background
+
+bar {
+    status_command i3status --config ~/.config/i3/i3status.conf
+    colors {
+        background $foreground
+        statusline $background
+        separator $blue1
+        focused_workspace $cyan1 $cyan1 $foreground
+        active_workspace $blue1 $blue1 $foreground
+        inactive_workspace $blue1 $blue1 $foreground
+        urgent_workspace $red1 $red1 $foreground
+    }
+}
