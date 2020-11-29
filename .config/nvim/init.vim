@@ -1,25 +1,24 @@
 set nocompatible
 set modeline
 syntax enable
-set t_Co=256
+set termguicolors
 
 " To install, do :PlugInstall!
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 let g:ftplugin_sql_omni_key = '<C-j>'
-let g:gruvbox_italic=1
+"let g:gruvbox_italic=1
 let g:airline_powerline_fonts=1
-let g:gruvbox_contrast_light="hard"
-let g:gruvbox_termcolors=16
+"let g:gruvbox_contrast_light="hard"
+"let g:gruvbox_termcolors=16
 
-hi Normal ctermbg=none
-
-set background=light
-autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
+colorscheme iceberg
 
 set noswapfile
 set nobackup

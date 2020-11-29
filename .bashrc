@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-#export TERM=screen-256color
-export TERM=gnome-256color
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -78,10 +76,23 @@ DARKGREEN="\[\033[38;5;58m\]"
 
 # GRUVBOX
 GB_RED="\[\033[38;5;167m\]"
-GB_GREEN="\[\033[38;5;142m\]"
+GB_GREEN="\[\033[38;5;106m\]"
 GB_YELLOW="\[\033[38;5;214m\]"
 GB_BLUE="\[\033[38;5;109m\]"
-GB_PURPLE="\[\033[38;5;175m\]"
+GB_PURPLE="\[\033[38;5;132m\]"
+
+# ANGR
+ANGR_ORANGE="\[\033[38;5;173m\]"
+ANGR_PURPLE="\[\033[38;5;141m\]"
+ANGR_LGREEN="\[\033[38;5;115m\]"
+ANGR_LORANGE="\[\033[38;5;215m\]"
+ANGR_RED="\[\033[38;5;167m\]"
+
+# ICEBERG
+IB_CYAN="\[\033[38;5;109m\]"
+IB_PURPLE="\[\033[38;5;140m\]"
+IB_RED="\[\033[38;5;203m\]"
+IB_GREEN="\[\033[38;5;150m\]"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -89,9 +100,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    # GITHUB: PS1="${RED}[${WHITE}\u@\h${RED}$(parse_git_branch) ${PURPLE}\w${RED}] ${GREY}\$${GREY} "
-    PS1="${NORMAL}[${GB_RED}\u${NORMAL}@${GB_PURPLE}\h${NORMAL}$(parse_git_branch) ${GB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
-    # PS1=" ${DARKGOLDENROD}-> ${NORMAL}"
+    PS1="${NORMAL}[${IB_RED}\u${NORMAL}@${IB_PURPLE}\h${NORMAL}$(parse_git_branch) ${IB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -108,18 +117,21 @@ alias g++='g++ --std=c++17 -O2'
 alias gdb='gdb -q'
 alias ls='ls --color=auto'
 alias please='sudo'
+alias vim='nvim'
+alias xup="xrdb -merge ~/.Xresources"
 
+# WSL clip function
 # function clip() {
 #     cat $1 | clip.exe
 # }
 
+# LINUX clip function
 function clip() {
     cat $1 | xclip -sel clip
 }
 
-DIR_COLOR="\033[38;5;251"
-DEF_COLOR="\033[0"
-FILE_COLOR="\033[38;5;109"
+DEF_COLOR="\[\033[0"
+FILE_COLOR="\[\033[38;5;216"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
 export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/cp_gen"
