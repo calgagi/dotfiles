@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/calvin/.config/i3'
+let g:netrw_dirhist_4='/home/calvin/repos/aoc/.git'
 let g:netrw_dirhist_3='/home/calvin/.config'
 let g:netrw_dirhist_2='/home/calvin/.config/spicetify/Themes'
 let g:netrw_dirhist_1='/home/calvin/.vim'

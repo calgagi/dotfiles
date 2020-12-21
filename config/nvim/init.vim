@@ -7,8 +7,9 @@ set termguicolors
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
+Plug 'tpope/vim-commentary'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 let g:ftplugin_sql_omni_key = '<C-j>'

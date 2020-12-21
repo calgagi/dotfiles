@@ -100,7 +100,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${NORMAL}[${IB_RED}\u${NORMAL}@${IB_PURPLE}\h${NORMAL}$(parse_git_branch) ${IB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
+    PS1="${NORMAL}[${IB_RED}\u${NORMAL}@${IB_PURPLE}\h${NORMAL}$(parse_git_branch) ${IB_CYAN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -131,7 +131,7 @@ function clip() {
 }
 
 DEF_COLOR="\[\033[0"
-FILE_COLOR="\[\033[38;5;216"
+FILE_COLOR="\[\033[38;5;150"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
-export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/cp_gen"
+export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/repos/cp_gen"

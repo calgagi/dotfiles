@@ -1,0 +1,156 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[settings]
+format-padding = 1
+format-margin = 1
+
+[cols] 
+background = ${xrdb:background:#fff}
+transparent = #00000000
+foreground = ${xrdb:foreground:#fff}
+dark_red = ${xrdb:color1:#fff}
+dark_blue = ${xrdb:color4:#fff}
+dark_purple = ${xrdb:color5:#fff}
+dark_green = ${xrdb:color2:#fff}
+light_red = ${xrdb:color9:#fff}
+light_blue = ${xrdb:color12:#fff}
+light_purple = ${xrdb:color13:#fff}
+
+[bar/left]
+modules-left = i3
+font-0 = "SauceCodePro Nerd Font:size=11"
+override-redirect = true
+wm-restack = i3
+offset-x = -10px
+offset-y = 7px
+enable-ipc = true
+width = 500px; 
+height = 29px
+background = ${cols.transparent}
+line-size = 2px
+
+[bar/right]
+background = ${cols.transparent}
+font-0 = "SauceCodePro Nerd Font:size=11"
+modules-right = battery alsa wifi date
+override-redirect = true
+wm-restack = i3
+offset-x = 100%:-557px
+offset-y = 7px
+enable-ipc = true
+width = 550px
+height = 29px
+line-size = 2px
+
+# left modules
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 1
+label-mode-foreground = ${cols.foreground}
+label-mode-background = ${cols.transparent}
+label-mode-underline = ${cols.dark_purple}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${cols.transparent}
+label-focused-padding = 1
+label-focused-underline = ${cols.dark_green}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-unfocused-background = ${cols.transparent}
+label-unfocused-underline = ${cols.transparent}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = 1
+label-visible-underline = ${cols.transparent}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${cols.transparent}
+label-urgent-padding = 1
+label-urgenr-underline = ${cols.dark_red}
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/alsa]
+type=internal/pulseaudio
+
+format-volume-underline = ${cols.accent_light}
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+format-volume = <ramp-volume> <label-volume>
+
+format-muted-underline = ${cols.accent_light}
+label-muted = ﱝ %percentage%%
+
+use-ui-max = false
+
+[module/wifi]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+format-connected-underline = ${cols.dark_green}
+format-disconnected-underline = ${cols.dark_red}
+label-connected = %local_ip%
+format-connected = 直 <label-connected>
+
+[module/date]
+type = internal/date
+label = %time% %date% 
+date = %b %d%
+time = %H:%M:%S
+format-underline = ${cols.accent_light}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+format-charging = <animation-charging>  <label-charging>
+format-charging-underline = ${cols.dark_green}
+format-discharging = <ramp-capacity>  <label-discharging>
+format-discharging-underline = ${self.transparent}
+format-full-prefix = "  "
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750

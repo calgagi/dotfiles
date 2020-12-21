@@ -16,7 +16,8 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font xft:Source Code Pro for Powerline 11
+# font pango:Source Code Pro for Powerline 12px
+font pango:SauceCodePro Nerd Font 11px
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -81,7 +82,6 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -168,14 +168,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # picom -- extremely important, also need ~/.config/picom.conf
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --config ~/.config/picom.conf
 
 # gaps
 gaps outer 0
 gaps inner 10
-
-# enable natural scrolling (requires xf86-input-synaptics)
-exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
 
 # set colors from Xresources
 # special
@@ -209,28 +206,52 @@ set_from_resource $white1 color7 #4E4E4E
 set_from_resource $white2 color15 #ffffff
 
 # border background color
-client.focused $yellow1 $yellow1 $yellow1 $yellow1 $yellow1
-client.unfocused $blue1 $blue1 $blue1 $blue1 $blue1
-client.focused_inactive $yellow1 $yellow1 $yellow1 $yellow1 $yellow1
+# client.focused $green1 $green1 $green1 $green1 $green1
+# client.unfocused $blue1 $blue1 $blue1 $blue1 $blue1
+# client.focused_inactive $yellow1 $yellow1 $yellow1 $yellow1 $yellow1
+# client.urgent $red1 $red1 $red1 $red1 $red1
+# client.placeholder $background $background $background $background $background
+# client.background $background $background $background $background $background
+
+
+client.focused $background $background $background $background $background 
+client.unfocused $background $background $background $background $background 
+client.focused_inactive $background $background $background $background $background
 client.urgent $red1 $red1 $red1 $red1 $red1
 client.placeholder $background $background $background $background $background
 client.background $background $background $background $background $background
 
-bar {
-    status_command i3status --config ~/.config/i3/i3status.conf
-    colors {
-        background $background
-        statusline $foreground
-        separator $yellow1
-        focused_workspace $yellow1 $yellow1 $background
-        active_workspace $yellow1 $yellow1 $background
-        inactive_workspace $blue1 $blue1 $background
-        urgent_workspace $red1 $red1 $background
-    }
-}
+# Uncomment for i3bar
+# bar {
+#     position bottom
+#     status_command i3status --config ~/.config/i3/i3status.conf
+#     colors {
+#         background $background
+#         statusline $foreground
+#         separator $green1
+#         focused_workspace $green1 $green1 $background
+#         active_workspace $green1 $green1 $background
+#         inactive_workspace $blue1 $blue1 $background
+#         urgent_workspace $red1 $red1 $background
+#     }
+# }
+
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Removes border text, makes it only 2 pixels
 for_window [class="^.*"] border pixel 2
 
 # background image
-exec --no-startup-id hsetroot -solid '$black2'
+exec --no-startup-id feh --bg-scale ~/.config/background.jpg
+
+bindsym $mod+w exec --no-startup-id firefox
+
+# remove if on other laptop
+exec --no-startup-id xinput set-prop 12 301 1
+exec --no-startup-id xinput set-prop 13 301 1
+
+for_window [class="^.*"] border none
+gaps inner 8
+gaps outer 0
+gaps top 34
