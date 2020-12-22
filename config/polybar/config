@@ -33,6 +33,7 @@ light_blue = ${xrdb:color12:#fff}
 light_purple = ${xrdb:color13:#fff}
 
 [bar/left]
+monitor = ${env:MONITORL:}
 modules-left = i3
 font-0 = "SauceCodePro Nerd Font:size=11"
 override-redirect = true
@@ -46,6 +47,7 @@ background = ${cols.transparent}
 line-size = 2px
 
 [bar/right]
+monitor = ${env:MONITORR:}
 background = ${cols.transparent}
 font-0 = "SauceCodePro Nerd Font:size=11"
 modules-right = battery alsa wifi date
@@ -60,13 +62,13 @@ line-size = 2px
 
 # left modules
 [module/i3]
+pin-workspaces = true
 type = internal/i3
 format = <label-state><label-mode>
 index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-pin-workspaces = true
 
 label-mode-padding = 1
 label-mode-foreground = ${cols.foreground}
