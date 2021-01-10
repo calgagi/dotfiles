@@ -17,7 +17,7 @@
 ;==========================================================
 
 [settings]
-format-padding = 1
+format-padding = 0
 format-margin = 1
 
 [cols] 
@@ -38,7 +38,7 @@ modules-left = i3
 font-0 = "SauceCodePro Nerd Font:size=11"
 override-redirect = true
 wm-restack = i3
-offset-x = -10px
+offset-x = 0px
 offset-y = 7px
 enable-ipc = true
 width = 500px; 
@@ -50,7 +50,7 @@ line-size = 2px
 monitor = ${env:MONITORR:}
 background = ${cols.transparent}
 font-0 = "SauceCodePro Nerd Font:size=11"
-modules-right = battery alsa wifi date
+modules-right = alsa backlight battery wifi date
 override-redirect = true
 wm-restack = i3
 offset-x = 100%:-557px
@@ -97,7 +97,7 @@ label-visible-underline = ${cols.transparent}
 label-urgent = %index%
 label-urgent-background = ${cols.transparent}
 label-urgent-padding = 1
-label-urgenr-underline = ${cols.dark_red}
+label-urgent-underline = ${cols.dark_red}
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -124,15 +124,13 @@ interface = wlp0s20f3
 interval = 3.0
 format-connected-underline = ${cols.dark_green}
 format-disconnected-underline = ${cols.dark_red}
-label-connected = %local_ip%
+label-connected = %essid%
 format-connected = 直 <label-connected>
 
 [module/date]
 type = internal/date
-label = %time% %date% 
-date = %b %d%
+label = %time%
 time = %H:%M:%S
-format-underline = ${cols.accent_light}
 
 [module/battery]
 type = internal/battery
@@ -156,3 +154,10 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+format = <label>
+label =  %percentage%

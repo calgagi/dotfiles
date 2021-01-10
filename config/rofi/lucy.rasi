@@ -17,12 +17,13 @@ Shamelessly stolen from:
 	accent: #b4be82;
     using: #e27878;
     tran: #00000000;
+    accentblue: #84a0c6;
 
 	color: @fg;
 }
 
 element selected {
-	color: @using;
+	color: @accentblue;
 }
 
 mainbox {
@@ -49,7 +50,7 @@ element {
 }
 
 inputbar {
-	background-color: @accent;
+	background-color: @accentblue;
 	color: @bg;
 	border-radius: 5px;
 	padding: 5 0;
@@ -57,10 +58,9 @@ inputbar {
 
 window {
 	background-color: @tran;
-	width:300px;
 	location: north;
 	y-offset: 4px;
-	width: 1000px;
+	width: 900px;
 	height: 28px;
 }
 

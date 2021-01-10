@@ -20,9 +20,9 @@ let g:airline_powerline_fonts=1
 
 set background=dark
 colorscheme iceberg
-highlight Normal guibg=none ctermbg=none
-highlight NonText guibg=none ctermbg=none
-highlight EndOfBuffer guibg=none ctermbg=none
+" highlight Normal guibg=none ctermbg=none
+" highlight NonText guibg=none ctermbg=none
+" highlight EndOfBuffer guibg=none ctermbg=none
 
 set noswapfile
 set nobackup
