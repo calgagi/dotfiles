@@ -61,11 +61,9 @@ BAD="GREEN"
 SELECT="if [ \$? = 0 ]; then echo \"${GREEN}\"; else echo \"${RED}\"; fi"
 
 # NORD
-NORD_LIGHTBLUE="\[\033[38;5;68m\]"
-NORD_DARKGREEN="\[\033[38;5;23m\]"
-NORD_LLBLUE="\[\033[38;5;111m\]"
-NORD_BLUE="\[\033[38;5;27m\]"
-GREY="\[\033[38;5;251m\]"
+NORD_RED="\[\e[31m]\]"
+NORD_GREEN="\[\e[32m\]"
+NORD_BLUE="\[\e[1;34m\]"
 
 # SOLARIZED 
 LIGHTSEAGREEN="\[\033[38;5;37m\]"
@@ -100,7 +98,7 @@ parse_git_branch() {
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${NORMAL}[${IB_RED}\u${NORMAL}@${IB_PURPLE}\h${NORMAL}$(parse_git_branch) ${IB_CYAN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
+    PS1="${NORMAL}[${GB_RED}\u${NORMAL}@${GB_PURPLE}\h${NORMAL}$(parse_git_branch) ${GB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -134,4 +132,4 @@ DEF_COLOR="\[\033[0"
 FILE_COLOR="\[\033[38;5;150"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
-export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/repos/cp_gen"
+export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/Repos/cp_gen"

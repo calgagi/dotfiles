@@ -10,16 +10,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'cocopon/iceberg.vim'
 Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 let g:ftplugin_sql_omni_key = '<C-j>'
-"let g:gruvbox_italic=1
+let g:gruvbox_italic=1
 let g:airline_powerline_fonts=1
-"let g:gruvbox_contrast_light="hard"
 "let g:gruvbox_termcolors=16
 
 set background=dark
-colorscheme iceberg
+colorscheme gruvbox
 " highlight Normal guibg=none ctermbg=none
 " highlight NonText guibg=none ctermbg=none
 " highlight EndOfBuffer guibg=none ctermbg=none
