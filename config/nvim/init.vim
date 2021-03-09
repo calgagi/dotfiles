@@ -2,6 +2,7 @@ set nocompatible
 set modeline
 syntax enable
 set termguicolors
+set clipboard=unnamedplus
 
 " To install, do :PlugInstall!
 call plug#begin('~/.vim/plugged')
@@ -11,12 +12,19 @@ Plug 'cocopon/iceberg.vim'
 Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ycm-core/YouCompleteMe' { 'do': './install.py --clangd-completer' }
 call plug#end()
 
 let g:ftplugin_sql_omni_key = '<C-j>'
 let g:gruvbox_italic=1
 let g:airline_powerline_fonts=1
 "let g:gruvbox_termcolors=16
+
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_global_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_enable_diagnostic_signs=0
+let g:ycm_show_diagnostics_ui=0
+set completeopt-=preview
 
 set background=dark
 colorscheme gruvbox
