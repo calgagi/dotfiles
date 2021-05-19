@@ -92,13 +92,18 @@ IB_PURPLE="\[\033[38;5;140m\]"
 IB_RED="\[\033[38;5;203m\]"
 IB_GREEN="\[\033[38;5;150m\]"
 
+# PAPERCOLOR
+PC_RED="\[\033[38;5;124m\]"
+PC_GREEN="\[\033[38;5;64m\]"
+PC_PURPLE="\[\033[38;5;91m\]"
+
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # THE ALL IMPORTANT PS1
 make_prompt() {
-    PS1="${NORMAL}[${GB_RED}\u${NORMAL}@${GB_PURPLE}\h${NORMAL}$(parse_git_branch) ${GB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
+    PS1="${NORMAL}[${IB_RED}\u${NORMAL}@${IB_PURPLE}\h${NORMAL}$(parse_git_branch) ${IB_GREEN}\w${NORMAL}] ${NORMAL}\$${NORMAL} "
 }
 
 PROMPT_COMMAND='make_prompt'
@@ -129,7 +134,7 @@ function clip() {
 }
 
 DEF_COLOR="\[\033[0"
-FILE_COLOR="\[\033[38;5;150"
+FILE_COLOR="\[\033[38;5;109"
 export LS_COLORS="ln=$DEF_COLOR:pi=$DEF_COLOR:so=$DEF_COLOR:bd=$DEF_COLOR:cd=$DEF_COLOR:mi=$DEF_COLOR:ex=$FILE_COLOR:di=$DEF_COLOR:ow=$DEF_COLOR:no=$DEF_COLOR:fi=$FILE_COLOR:"
 
 export PATH="$PATH:$HOME/cf_rand:$HOME/.local/bin:$HOME/Repos/cp_gen"
